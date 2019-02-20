@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04E163D32217B2D7004B2A04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E163D22217B2D7004B2A04 /* AppDelegate.m */; };
+		04E163D62217B2D7004B2A04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E163D52217B2D7004B2A04 /* ViewController.m */; };
+		04E163D92217B2D7004B2A04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E163D72217B2D7004B2A04 /* Main.storyboard */; };
+		04E163DB2217B2D9004B2A04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E163DA2217B2D9004B2A04 /* Assets.xcassets */; };
+		04E163DE2217B2D9004B2A04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E163DC2217B2D9004B2A04 /* LaunchScreen.storyboard */; };
+		04E163E12217B2D9004B2A04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E163E02217B2D9004B2A04 /* main.m */; };
+		04E163FA2217BB70004B2A04 /* NESImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E163EC2217B5CD004B2A04 /* NESImage.framework */; };
+		04E163FC2217C080004B2A04 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E163FB2217C080004B2A04 /* libc++.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04E163EB2217B5CD004B2A04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04E163E72217B5CD004B2A04 /* NESImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 043658822110A58600487018;
+			remoteInfo = NESImage;
+		};
+		04E163F72217BB6D004B2A04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04E163E72217B5CD004B2A04 /* NESImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 043658812110A58600487018;
+			remoteInfo = NESImage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04E163CE2217B2D7004B2A04 /* NESImageCameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NESImageCameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E163D12217B2D7004B2A04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04E163D22217B2D7004B2A04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04E163D42217B2D7004B2A04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		04E163D52217B2D7004B2A04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		04E163D82217B2D7004B2A04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04E163DA2217B2D9004B2A04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04E163DD2217B2D9004B2A04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04E163DF2217B2D9004B2A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E163E02217B2D9004B2A04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04E163E72217B5CD004B2A04 /* NESImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NESImage.xcodeproj; path = ../NESImage/NESImage.xcodeproj; sourceTree = "<group>"; };
+		04E163FB2217C080004B2A04 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04E163CB2217B2D7004B2A04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E163FC2217C080004B2A04 /* libc++.tbd in Frameworks */,
+				04E163FA2217BB70004B2A04 /* NESImage.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04E163C52217B2D7004B2A04 = {
+			isa = PBXGroup;
+			children = (
+				04E163E72217B5CD004B2A04 /* NESImage.xcodeproj */,
+				04E163D02217B2D7004B2A04 /* NESImageCameraDemo */,
+				04E163CF2217B2D7004B2A04 /* Products */,
+				04E163F92217BB70004B2A04 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		04E163CF2217B2D7004B2A04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04E163CE2217B2D7004B2A04 /* NESImageCameraDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04E163D02217B2D7004B2A04 /* NESImageCameraDemo */ = {
+			isa = PBXGroup;
+			children = (
+				04E163D12217B2D7004B2A04 /* AppDelegate.h */,
+				04E163D22217B2D7004B2A04 /* AppDelegate.m */,
+				04E163D42217B2D7004B2A04 /* ViewController.h */,
+				04E163D52217B2D7004B2A04 /* ViewController.m */,
+				04E163D72217B2D7004B2A04 /* Main.storyboard */,
+				04E163DA2217B2D9004B2A04 /* Assets.xcassets */,
+				04E163DC2217B2D9004B2A04 /* LaunchScreen.storyboard */,
+				04E163DF2217B2D9004B2A04 /* Info.plist */,
+				04E163E02217B2D9004B2A04 /* main.m */,
+			);
+			path = NESImageCameraDemo;
+			sourceTree = "<group>";
+		};
+		04E163E82217B5CD004B2A04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04E163EC2217B5CD004B2A04 /* NESImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04E163F92217BB70004B2A04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04E163FB2217C080004B2A04 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04E163CD2217B2D7004B2A04 /* NESImageCameraDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E163E42217B2D9004B2A04 /* Build configuration list for PBXNativeTarget "NESImageCameraDemo" */;
+			buildPhases = (
+				04E163CA2217B2D7004B2A04 /* Sources */,
+				04E163CB2217B2D7004B2A04 /* Frameworks */,
+				04E163CC2217B2D7004B2A04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E163F82217BB6D004B2A04 /* PBXTargetDependency */,
+			);
+			name = NESImageCameraDemo;
+			productName = NESImageCameraDemo;
+			productReference = 04E163CE2217B2D7004B2A04 /* NESImageCameraDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04E163C62217B2D7004B2A04 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = chen;
+				TargetAttributes = {
+					04E163CD2217B2D7004B2A04 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 04E163C92217B2D7004B2A04 /* Build configuration list for PBXProject "NESImageCameraDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04E163C52217B2D7004B2A04;
+			productRefGroup = 04E163CF2217B2D7004B2A04 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 04E163E82217B5CD004B2A04 /* Products */;
+					ProjectRef = 04E163E72217B5CD004B2A04 /* NESImage.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				04E163CD2217B2D7004B2A04 /* NESImageCameraDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		04E163EC2217B5CD004B2A04 /* NESImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NESImage.framework;
+			remoteRef = 04E163EB2217B5CD004B2A04 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04E163CC2217B2D7004B2A04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E163DE2217B2D9004B2A04 /* LaunchScreen.storyboard in Resources */,
+				04E163DB2217B2D9004B2A04 /* Assets.xcassets in Resources */,
+				04E163D92217B2D7004B2A04 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04E163CA2217B2D7004B2A04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E163D62217B2D7004B2A04 /* ViewController.m in Sources */,
+				04E163E12217B2D9004B2A04 /* main.m in Sources */,
+				04E163D32217B2D7004B2A04 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04E163F82217BB6D004B2A04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NESImage;
+			targetProxy = 04E163F72217BB6D004B2A04 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04E163D72217B2D7004B2A04 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04E163D82217B2D7004B2A04 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04E163DC2217B2D9004B2A04 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04E163DD2217B2D9004B2A04 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04E163E22217B2D9004B2A04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04E163E32217B2D9004B2A04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04E163E52217B2D9004B2A04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5DTKJ6X5RU;
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../NESImage/NESImage/interface/objc\"/**";
+				INFOPLIST_FILE = NESImageCameraDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = chen.NESImageCameraDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04E163E62217B2D9004B2A04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5DTKJ6X5RU;
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../NESImage/NESImage/interface/objc\"/**";
+				INFOPLIST_FILE = NESImageCameraDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = chen.NESImageCameraDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04E163C92217B2D7004B2A04 /* Build configuration list for PBXProject "NESImageCameraDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E163E22217B2D9004B2A04 /* Debug */,
+				04E163E32217B2D9004B2A04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E163E42217B2D9004B2A04 /* Build configuration list for PBXNativeTarget "NESImageCameraDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E163E52217B2D9004B2A04 /* Debug */,
+				04E163E62217B2D9004B2A04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04E163C62217B2D7004B2A04 /* Project object */;
+}

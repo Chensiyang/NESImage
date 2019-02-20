@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CoreMedia.h>
-#import "NESGLTexture.h"
-#import "NESInput.h"
+#import <NESGLTexture.h>
+#import <NESInput.h>
 
 @interface NESOutput : NSObject
 {
@@ -28,6 +28,7 @@
 
 
 @property (strong, nonatomic) NESGLTexture* outputTexture;
+@property (assign, nonatomic) CGRect renderRect;
 
 
 @end

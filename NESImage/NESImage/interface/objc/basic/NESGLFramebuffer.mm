@@ -31,6 +31,11 @@ void *NES_get_native_framebuffer(NESGLFramebuffer *framebuffer)
 
 -(void)dealloc
 {
+    [self cleanNativeFramebuffer];
+}
+
+- (void)cleanNativeFramebuffer
+{
     if(_cnative_framebuffer){
         nes_glDeleteFramebuffers(1, &(_cnative_framebuffer->framebufferid));
         delete _cnative_framebuffer;
@@ -71,12 +76,13 @@ void *NES_get_native_framebuffer(NESGLFramebuffer *framebuffer)
 - (void)bindtoFramebufferViewPort:(CGRect)rect
 {
     if(_cnative_framebuffer){
-        _cnative_framebuffer->bindtoFramebufferViewPort(NESCGL::NESRecti{
+        NESCGL::NESRecti r_rect = NESCGL::NESRecti{
             static_cast<NESCGL::NESint>(rect.origin.x),
             static_cast<NESCGL::NESint>(rect.origin.y),
             static_cast<NESCGL::NESint>(rect.size.width),
             static_cast<NESCGL::NESint>(rect.size.height)
-        });
+        };
+        _cnative_framebuffer->bindtoFramebufferViewPort(&r_rect);
     }
 }
 

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041B10112124774700F60123 /* NESGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 041B100F2124774700F60123 /* NESGLProgram.h */; };
+		041B10112124774700F60123 /* NESGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 041B100F2124774700F60123 /* NESGLProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		041B1015212477B000F60123 /* NESGLTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = 041B1013212477B000F60123 /* NESGLTexture.mm */; };
 		041B1016212477B000F60123 /* NESGLProgram.mm in Sources */ = {isa = PBXBuildFile; fileRef = 041B1014212477B000F60123 /* NESGLProgram.mm */; };
-		041B1019212477F000F60123 /* NESGLFramebuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 041B1017212477F000F60123 /* NESGLFramebuffer.h */; };
+		041B1019212477F000F60123 /* NESGLFramebuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 041B1017212477F000F60123 /* NESGLFramebuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		041B101A212477F000F60123 /* NESGLFramebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 041B1018212477F000F60123 /* NESGLFramebuffer.mm */; };
-		041B101D2124781400F60123 /* NESGLVertexBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 041B101B2124781400F60123 /* NESGLVertexBuffer.h */; };
+		041B101D2124781400F60123 /* NESGLVertexBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 041B101B2124781400F60123 /* NESGLVertexBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		041B101E2124781400F60123 /* NESGLVertexBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 041B101C2124781400F60123 /* NESGLVertexBuffer.mm */; };
 		041BC9992111FB5B00893FC5 /* NESCGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9972111FB5B00893FC5 /* NESCGL.cpp */; };
 		041BC99A2111FB5B00893FC5 /* NESCGL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 041BC9982111FB5B00893FC5 /* NESCGL.hpp */; };
@@ -28,20 +28,28 @@
 		043658A42110B71700487018 /* NESCGLProgram.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 043658A22110B71700487018 /* NESCGLProgram.hpp */; };
 		043658A72110B72C00487018 /* NESCGLTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 043658A52110B72C00487018 /* NESCGLTypes.cpp */; };
 		043658A82110B72C00487018 /* NESCGLTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 043658A62110B72C00487018 /* NESCGLTypes.hpp */; };
-		043658AB2110BB2400487018 /* NESGLTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 043658A92110BB2400487018 /* NESGLTexture.h */; };
-		04420F44215D2C5200DDDD65 /* NESInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 04420F42215D2C5200DDDD65 /* NESInput.h */; };
-		04420F48215D2C5C00DDDD65 /* NESOutput.h in Headers */ = {isa = PBXBuildFile; fileRef = 04420F46215D2C5C00DDDD65 /* NESOutput.h */; };
+		043658AB2110BB2400487018 /* NESGLTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 043658A92110BB2400487018 /* NESGLTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04420F44215D2C5200DDDD65 /* NESInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 04420F42215D2C5200DDDD65 /* NESInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04420F48215D2C5C00DDDD65 /* NESOutput.h in Headers */ = {isa = PBXBuildFile; fileRef = 04420F46215D2C5C00DDDD65 /* NESOutput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04420F49215D2C5C00DDDD65 /* NESOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 04420F47215D2C5C00DDDD65 /* NESOutput.m */; };
+		045FC9F622145CF100953489 /* NESCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 045FC9F422145CF100953489 /* NESCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		045FC9F722145CF100953489 /* NESCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 045FC9F522145CF100953489 /* NESCamera.m */; };
 		047BDDD321D11820009D9F7A /* NESCGLFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 047BDDD121D11820009D9F7A /* NESCGLFilter.cpp */; };
 		047BDDD421D11820009D9F7A /* NESCGLFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 047BDDD221D11820009D9F7A /* NESCGLFilter.hpp */; };
-		047F4953215E7F6B00C688D0 /* NESFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 047F4951215E7F6B00C688D0 /* NESFilter.h */; };
-		047F4954215E7F6B00C688D0 /* NESFilter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 047F4952215E7F6B00C688D0 /* NESFilter.mm */; };
+		047F4953215E7F6B00C688D0 /* NESGLFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 047F4951215E7F6B00C688D0 /* NESGLFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		047F4954215E7F6B00C688D0 /* NESGLFilter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 047F4952215E7F6B00C688D0 /* NESGLFilter.mm */; };
 		049178092119D8BF0084B3C9 /* NESCGLVertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049178072119D8BF0084B3C9 /* NESCGLVertexBuffer.cpp */; };
 		0491780A2119D8BF0084B3C9 /* NESCGLVertexBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 049178082119D8BF0084B3C9 /* NESCGLVertexBuffer.hpp */; };
-		04D7A7A9212994D300EDD769 /* NESGLContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D7A7A7212994D300EDD769 /* NESGLContext.h */; };
-		04D7A7AA212994D300EDD769 /* NESGLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D7A7A8212994D300EDD769 /* NESGLContext.m */; };
-		04D7A7AD21299BF900EDD769 /* NESGLTexturePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D7A7AB21299BF900EDD769 /* NESGLTexturePool.h */; };
+		049A01C52212F31600158FB4 /* NESGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 049A01C32212F31600158FB4 /* NESGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		049A01C62212F31600158FB4 /* NESGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 049A01C42212F31600158FB4 /* NESGLView.mm */; };
+		04D7A7A9212994D300EDD769 /* NESGLContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D7A7A7212994D300EDD769 /* NESGLContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04D7A7AA212994D300EDD769 /* NESGLContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D7A7A8212994D300EDD769 /* NESGLContext.mm */; };
+		04D7A7AD21299BF900EDD769 /* NESGLTexturePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D7A7AB21299BF900EDD769 /* NESGLTexturePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04D7A7AE21299BF900EDD769 /* NESGLTexturePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D7A7AC21299BF900EDD769 /* NESGLTexturePool.m */; };
+		04E163EE2217B5E4004B2A04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E163ED2217B5E4004B2A04 /* CoreGraphics.framework */; };
+		04E163F02217B5EF004B2A04 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E163EF2217B5EF004B2A04 /* AVFoundation.framework */; };
+		04E163F22217B604004B2A04 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E163F12217B603004B2A04 /* CoreVideo.framework */; };
+		04E163F42217B610004B2A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E163F32217B610004B2A04 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,16 +80,24 @@
 		04420F42215D2C5200DDDD65 /* NESInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESInput.h; sourceTree = "<group>"; };
 		04420F46215D2C5C00DDDD65 /* NESOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESOutput.h; sourceTree = "<group>"; };
 		04420F47215D2C5C00DDDD65 /* NESOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NESOutput.m; sourceTree = "<group>"; };
+		045FC9F422145CF100953489 /* NESCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESCamera.h; sourceTree = "<group>"; };
+		045FC9F522145CF100953489 /* NESCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NESCamera.m; sourceTree = "<group>"; };
 		047BDDD121D11820009D9F7A /* NESCGLFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NESCGLFilter.cpp; sourceTree = "<group>"; };
 		047BDDD221D11820009D9F7A /* NESCGLFilter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NESCGLFilter.hpp; sourceTree = "<group>"; };
-		047F4951215E7F6B00C688D0 /* NESFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESFilter.h; sourceTree = "<group>"; };
-		047F4952215E7F6B00C688D0 /* NESFilter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NESFilter.mm; sourceTree = "<group>"; };
+		047F4951215E7F6B00C688D0 /* NESGLFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESGLFilter.h; sourceTree = "<group>"; };
+		047F4952215E7F6B00C688D0 /* NESGLFilter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NESGLFilter.mm; sourceTree = "<group>"; };
 		049178072119D8BF0084B3C9 /* NESCGLVertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NESCGLVertexBuffer.cpp; sourceTree = "<group>"; };
 		049178082119D8BF0084B3C9 /* NESCGLVertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NESCGLVertexBuffer.hpp; sourceTree = "<group>"; };
+		049A01C32212F31600158FB4 /* NESGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESGLView.h; sourceTree = "<group>"; };
+		049A01C42212F31600158FB4 /* NESGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NESGLView.mm; sourceTree = "<group>"; };
 		04D7A7A7212994D300EDD769 /* NESGLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESGLContext.h; sourceTree = "<group>"; };
-		04D7A7A8212994D300EDD769 /* NESGLContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NESGLContext.m; sourceTree = "<group>"; };
+		04D7A7A8212994D300EDD769 /* NESGLContext.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NESGLContext.mm; sourceTree = "<group>"; };
 		04D7A7AB21299BF900EDD769 /* NESGLTexturePool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESGLTexturePool.h; sourceTree = "<group>"; };
 		04D7A7AC21299BF900EDD769 /* NESGLTexturePool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NESGLTexturePool.m; sourceTree = "<group>"; };
+		04E163ED2217B5E4004B2A04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		04E163EF2217B5EF004B2A04 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		04E163F12217B603004B2A04 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		04E163F32217B610004B2A04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +105,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E163F42217B610004B2A04 /* Foundation.framework in Frameworks */,
+				04E163F22217B604004B2A04 /* CoreVideo.framework in Frameworks */,
+				04E163F02217B5EF004B2A04 /* AVFoundation.framework in Frameworks */,
+				04E163EE2217B5E4004B2A04 /* CoreGraphics.framework in Frameworks */,
 				043658982110A69000487018 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				04D7A7A7212994D300EDD769 /* NESGLContext.h */,
-				04D7A7A8212994D300EDD769 /* NESGLContext.m */,
+				04D7A7A8212994D300EDD769 /* NESGLContext.mm */,
 				04D7A7AB21299BF900EDD769 /* NESGLTexturePool.h */,
 				04D7A7AC21299BF900EDD769 /* NESGLTexturePool.m */,
 			);
@@ -167,6 +187,8 @@
 		043658902110A66000487018 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				045FC9F422145CF100953489 /* NESCamera.h */,
+				045FC9F522145CF100953489 /* NESCamera.m */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -192,6 +214,8 @@
 		043658922110A66000487018 /* output */ = {
 			isa = PBXGroup;
 			children = (
+				049A01C32212F31600158FB4 /* NESGLView.h */,
+				049A01C42212F31600158FB4 /* NESGLView.mm */,
 			);
 			path = output;
 			sourceTree = "<group>";
@@ -199,8 +223,8 @@
 		043658932110A66000487018 /* filter */ = {
 			isa = PBXGroup;
 			children = (
-				047F4951215E7F6B00C688D0 /* NESFilter.h */,
-				047F4952215E7F6B00C688D0 /* NESFilter.mm */,
+				047F4951215E7F6B00C688D0 /* NESGLFilter.h */,
+				047F4952215E7F6B00C688D0 /* NESGLFilter.mm */,
 			);
 			path = filter;
 			sourceTree = "<group>";
@@ -238,6 +262,10 @@
 		043658962110A69000487018 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04E163F32217B610004B2A04 /* Foundation.framework */,
+				04E163F12217B603004B2A04 /* CoreVideo.framework */,
+				04E163EF2217B5EF004B2A04 /* AVFoundation.framework */,
+				04E163ED2217B5E4004B2A04 /* CoreGraphics.framework */,
 				043658972110A69000487018 /* OpenGLES.framework */,
 			);
 			name = Frameworks;
@@ -250,24 +278,26 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				043658A02110B65C00487018 /* NESCGLTexture.hpp in Headers */,
-				043658A82110B72C00487018 /* NESCGLTypes.hpp in Headers */,
+				049A01C52212F31600158FB4 /* NESGLView.h in Headers */,
 				041B101D2124781400F60123 /* NESGLVertexBuffer.h in Headers */,
-				047F4953215E7F6B00C688D0 /* NESFilter.h in Headers */,
-				041BC99E2112015000893FC5 /* NESCGLHelper.hpp in Headers */,
+				047F4953215E7F6B00C688D0 /* NESGLFilter.h in Headers */,
 				04D7A7AD21299BF900EDD769 /* NESGLTexturePool.h in Headers */,
-				047BDDD421D11820009D9F7A /* NESCGLFilter.hpp in Headers */,
-				043658872110A58600487018 /* NESImage.h in Headers */,
 				041B1019212477F000F60123 /* NESGLFramebuffer.h in Headers */,
-				041BC99A2111FB5B00893FC5 /* NESCGL.hpp in Headers */,
 				04420F48215D2C5C00DDDD65 /* NESOutput.h in Headers */,
-				0436589C2110B65000487018 /* NESCGLFramebuffer.hpp in Headers */,
-				0491780A2119D8BF0084B3C9 /* NESCGLVertexBuffer.hpp in Headers */,
-				043658A42110B71700487018 /* NESCGLProgram.hpp in Headers */,
+				045FC9F622145CF100953489 /* NESCamera.h in Headers */,
 				041B10112124774700F60123 /* NESGLProgram.h in Headers */,
 				04D7A7A9212994D300EDD769 /* NESGLContext.h in Headers */,
 				043658AB2110BB2400487018 /* NESGLTexture.h in Headers */,
 				04420F44215D2C5200DDDD65 /* NESInput.h in Headers */,
+				043658A02110B65C00487018 /* NESCGLTexture.hpp in Headers */,
+				043658A42110B71700487018 /* NESCGLProgram.hpp in Headers */,
+				043658A82110B72C00487018 /* NESCGLTypes.hpp in Headers */,
+				041BC99E2112015000893FC5 /* NESCGLHelper.hpp in Headers */,
+				047BDDD421D11820009D9F7A /* NESCGLFilter.hpp in Headers */,
+				043658872110A58600487018 /* NESImage.h in Headers */,
+				041BC99A2111FB5B00893FC5 /* NESCGL.hpp in Headers */,
+				0436589C2110B65000487018 /* NESCGLFramebuffer.hpp in Headers */,
+				0491780A2119D8BF0084B3C9 /* NESCGLVertexBuffer.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,13 +370,15 @@
 			files = (
 				043658A32110B71700487018 /* NESCGLProgram.cpp in Sources */,
 				043658A72110B72C00487018 /* NESCGLTypes.cpp in Sources */,
-				047F4954215E7F6B00C688D0 /* NESFilter.mm in Sources */,
+				047F4954215E7F6B00C688D0 /* NESGLFilter.mm in Sources */,
 				047BDDD321D11820009D9F7A /* NESCGLFilter.cpp in Sources */,
 				041B101E2124781400F60123 /* NESGLVertexBuffer.mm in Sources */,
-				04D7A7AA212994D300EDD769 /* NESGLContext.m in Sources */,
+				04D7A7AA212994D300EDD769 /* NESGLContext.mm in Sources */,
 				049178092119D8BF0084B3C9 /* NESCGLVertexBuffer.cpp in Sources */,
+				045FC9F722145CF100953489 /* NESCamera.m in Sources */,
 				04420F49215D2C5C00DDDD65 /* NESOutput.m in Sources */,
 				041B101A212477F000F60123 /* NESGLFramebuffer.mm in Sources */,
+				049A01C62212F31600158FB4 /* NESGLView.mm in Sources */,
 				0436589F2110B65C00487018 /* NESCGLTexture.cpp in Sources */,
 				041B1015212477B000F60123 /* NESGLTexture.mm in Sources */,
 				0436589B2110B65000487018 /* NESCGLFramebuffer.cpp in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NESGLTexture.h"
+#import <NESGLTexture.h>
 
 @class NESGLFramebuffer;
 

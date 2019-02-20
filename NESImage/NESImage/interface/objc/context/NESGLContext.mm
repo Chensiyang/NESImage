@@ -7,6 +7,7 @@
 //
 
 #import "NESGLContext.h"
+#import "NESCGLHelper.hpp"
 
 @interface NESGLContext ()
 {
@@ -29,10 +30,19 @@
             {
                 nesgl_context = [[NESGLContext alloc] init];
             }
+            
+            [NESGLContext configureNativeGLHelper];
         });
     }
     
     return nesgl_context;
+}
+
++ (void)configureNativeGLHelper
+{
+    NESCGL::NESCGLHelper* shared_heloper = NESCGL::access_shared_helper();
+    shared_heloper->isGLStateSafe = true;
+    shared_heloper->glInvokeSafeLevel = NESCGL::NES_GLSAFE_LEVEL_NONE;
 }
 
 +(BOOL)supportsSharedMemoryTexture

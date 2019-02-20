@@ -20,9 +20,10 @@ class NESCGLVertexBuffer{
 public:
     NESCGLVertexBuffer(void);
     NESCGLVertexBuffer(NESuint id, NESuint target);
-    ~NESCGLVertexBuffer(void);
+    virtual ~NESCGLVertexBuffer(void);
     
 public:
+    bool native_malloc = false;
     NESuint bufferid;   // gl vertexbuffer id, represent the native gl buffer
     NESuint buffertarget; // gl vertexbuffer target
     
@@ -32,16 +33,27 @@ public:
         NESuint vertexbuffers;
         nes_glGenBuffers(1, &vertexbuffers);
         NESCGLVertexBuffer *output_vertexbuffer = new NESCGLVertexBuffer(vertexbuffers, target);
+        output_vertexbuffer->native_malloc = true;
         return output_vertexbuffer;
     }
     
 };
+
+inline NESCGLVertexBuffer::~NESCGLVertexBuffer(void)
+{
+    if(native_malloc){
+        if(bufferid){
+            nes_glDeleteBuffers(1, &bufferid);
+        }
+    }
+}
     
 inline NESCGLVertexBuffer::NESCGLVertexBuffer(void)
 {
     bufferid = 0;
     buffertarget = 0;
 }
+    
 inline NESCGLVertexBuffer::NESCGLVertexBuffer(NESuint id, NESuint target)
 {
     bufferid = id;

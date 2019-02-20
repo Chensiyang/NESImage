@@ -43,8 +43,7 @@
 {
     for(int i = 0; i < mtargets.count; i++){
         id<NESInput> i_t = [mtargets objectAtIndex:i];
-        int i_i = [mtargetsOutputIndices objectAtIndex:i].intValue;
-        [self setInputTextureForTarget:i_t atIndex:i_i];
+        [i_t renderFrame:_renderRect atTime:time];
     }
 }
 - (void)addOutputTarget:(id<NESInput>)target

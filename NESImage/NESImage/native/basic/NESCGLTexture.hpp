@@ -26,15 +26,6 @@ public:
         NESenum mag_filter;
         
     }NESCGLTextureOptions;
-    //default gl texture options for 2D texture
-    static constexpr NESCGLTextureOptions NESDefault2DTextureOptions =
-    {
-        GL_RGBA,
-        GL_CLAMP_TO_EDGE,
-        GL_CLAMP_TO_EDGE,
-        GL_LINEAR,
-        GL_LINEAR
-    };
     
 public:
     // empty
@@ -45,6 +36,7 @@ public:
     virtual ~NESCGLTexture();
     
 public:
+    bool native_malloc = false;
     NESVec2i size; //size of texture in pixel
     NESuint textureid; // gl texture id represent the native gl texure
     
@@ -70,7 +62,7 @@ public:
         nes_glBindTexture(GL_TEXTURE_2D, 0);
         
         NESCGLTexture *output_texture = new NESCGLTexture(texture, width, height);
-        
+        output_texture->native_malloc = true;
         return output_texture;
     }
     static NESCGLTexture* createTextureWithOptions(NESuint width,
@@ -78,7 +70,7 @@ public:
                                                    NESCGLTextureOptions options,
                                                    NESenum dataformat,
                                                    NESenum datatype,
-                                                   const NESubyte *data){
+                                                   const NESubyte* data){
         if(!data){
             return NULL;
         }
@@ -99,11 +91,21 @@ public:
         nes_glBindTexture(GL_TEXTURE_2D, 0);
         
         NESCGLTexture *output_texture = new NESCGLTexture(texture, width, height);
-        
+        output_texture->native_malloc = true;
         return output_texture;
     }
     
 };
+    
+inline NESCGLTexture::~NESCGLTexture(void)
+{
+    if(native_malloc){
+        if(textureid){
+            nes_glDeleteTextures(1, &textureid);
+        }
+    }
+}
+    
 inline NESCGLTexture::NESCGLTexture(void)
 {
     textureid = 0;

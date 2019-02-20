@@ -31,6 +31,11 @@ void* NES_get_native_program(NESGLProgram *program)
 
 -(void)dealloc
 {
+    [self cleanNativeProgram];
+}
+
+- (void)cleanNativeProgram
+{
     if(_cnative_program){
         nes_glDeleteProgram(_cnative_program->programid);
         delete _cnative_program;

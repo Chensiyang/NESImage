@@ -74,6 +74,18 @@
 
 - (NESGLTexture*)fetchTextureFromPool:(uint32_t)width
                                height:(uint32_t)height
+{
+    NESGLTextureOptions default_options;
+    default_options.wrap_s = GL_CLAMP_TO_EDGE;
+    default_options.wrap_t = GL_CLAMP_TO_EDGE;
+    default_options.min_filter = GL_LINEAR;
+    default_options.mag_filter = GL_LINEAR;
+    
+    return [self fetchTextureFromPool:width height:height options:default_options];
+}
+
+- (NESGLTexture*)fetchTextureFromPool:(uint32_t)width
+                               height:(uint32_t)height
                               options:(NESGLTextureOptions)options
 {
     NSString *size_key = [NSString stringWithFormat:@"%d-%d %d-%d %d-%d",
@@ -93,7 +105,7 @@
         int exist_size = (int)fetch_list.count;
         for(int i = 0; i < exist_size; i++){
             NESGLTexture *i_texture = [fetch_list objectAtIndex:i];
-            if(0 == [i_texture getRefrenceCount]){
+            if(0 == [i_texture getReferenceCount]){
                 out_texture = i_texture;
                 [out_texture textureRetain];
                 break;

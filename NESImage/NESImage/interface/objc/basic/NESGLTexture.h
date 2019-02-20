@@ -30,7 +30,7 @@ typedef struct NESGLTextureOptions{
 
 @interface NESGLTexture : NSObject
 {
-    int refrence_count;
+    int reference_count;
 }
 
 @property (assign, nonatomic) uint32_t textureId;
@@ -45,11 +45,15 @@ typedef struct NESGLTextureOptions{
 
 -(instancetype)initWithImageSize:(CGSize)imagesize;
 
+-(instancetype)initWithTextureBuffer:(CVPixelBufferRef)imagebuffer;
+-(BOOL)refreshContentWithTextureBuffer:(CVPixelBufferRef)imagebuffer;
+
+
 - (CGImageRef)createImageFromTexture;
 
 - (void)textureRetain;
 - (void)textureRelease;
-- (int)getRefrenceCount;
+- (int)getReferenceCount;
 
 
 @end

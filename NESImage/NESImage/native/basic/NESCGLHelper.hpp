@@ -94,9 +94,17 @@ inline void NESCGLHelper::unblockThread(void)
 {
     sem_post(thread_block_semaphore);
 }
-    
-    
-static NESCGLHelper* default_cglhelper_instance;
+
+NESCGLHelper* access_shared_helper()
+{
+    static NESCGLHelper* default_cglhelper_instance = NULL;
+    if(NULL == default_cglhelper_instance)
+    {
+        default_cglhelper_instance = new NESCGLHelper();
+    }
+    return default_cglhelper_instance;
+}
+
     
 }//end NESCGL
 

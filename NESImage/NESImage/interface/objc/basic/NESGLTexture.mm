@@ -11,9 +11,22 @@
 #import "NESGLContext.h"
 #import "NESGLTexturePool.h"
 
+//default gl texture options for 2D texture
+static const NESCGL::NESCGLTexture::NESCGLTextureOptions NESDefault2DTextureOptions =
+{
+    GL_RGBA,
+    GL_CLAMP_TO_EDGE,
+    GL_CLAMP_TO_EDGE,
+    GL_LINEAR,
+    GL_LINEAR
+};
+
 @interface NESGLTexture()
 {
     NESCGL::NESCGLTexture::NESCGLTextureOptions texture_options;
+    
+    BOOL isGLTextureMemoryShared;
+    
 }
 
 @property (assign, nonatomic) NESCGL::NESCGLTexture *cnative_texture;
@@ -34,6 +47,14 @@ void* NES_get_native_texture(NESGLTexture *texture)
 
 -(void)dealloc
 {
+    [self cleanTextureRef];
+    
+    [self cleanNativeTexture];
+    
+}
+
+- (void)cleanTextureRef
+{
     if(_textureRef){
         CFRelease(_textureRef);
         _textureRef = NULL;
@@ -44,11 +65,64 @@ void* NES_get_native_texture(NESGLTexture *texture)
     }
     
     CVOpenGLESTextureCacheFlush([NESGLTexturePool sharedTexturePool].textureCacheRef, 0);
-    
+}
+
+- (void)cleanNativeTexture
+{
     if(_cnative_texture){
-        nes_glDeleteTextures(1, &(_cnative_texture->textureid));
+        if(!isGLTextureMemoryShared){
+            nes_glDeleteTextures(1, &(_cnative_texture->textureid));
+        }
         delete _cnative_texture;
     }
+}
+
+-(instancetype)initWithTextureBuffer:(CVPixelBufferRef)imagebuffer
+{
+    if(!(self = [super init])){
+        return nil;
+    }
+    if(!imagebuffer){
+        return nil;
+    }
+    
+    CFRetain(imagebuffer);
+    _textureBuffer = imagebuffer;
+    
+    _textureSize = CGSizeMake(CVPixelBufferGetWidth(imagebuffer),
+                              CVPixelBufferGetHeight(imagebuffer));
+    texture_options = NESDefault2DTextureOptions;
+    
+    CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                 [NESGLTexturePool sharedTexturePool].textureCacheRef,
+                                                 _textureBuffer,
+                                                 NULL,
+                                                 GL_TEXTURE_2D,
+                                                 GL_RGBA,
+                                                 (int)_textureSize.width,
+                                                 (int)_textureSize.height,
+                                                 GL_BGRA,
+                                                 GL_UNSIGNED_BYTE,
+                                                 0,
+                                                 &_textureRef);
+    nes_glBindTexture(CVOpenGLESTextureGetTarget(_textureRef), CVOpenGLESTextureGetName(_textureRef));
+    nes_glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, texture_options.wrap_s);
+    nes_glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, texture_options.wrap_t);
+    nes_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texture_options.min_filter);
+    nes_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texture_options.mag_filter);
+    nes_glBindTexture(GL_TEXTURE_2D, 0);
+    
+    if(_textureRef){
+        _cnative_texture = new NESCGL::NESCGLTexture(CVOpenGLESTextureGetName(_textureRef),
+                                                     (NESCGL::NESuint)_textureSize.width,
+                                                     (NESCGL::NESuint)_textureSize.height);
+    }
+    
+    isGLTextureMemoryShared = YES;
+    
+    reference_count = 0;
+    
+    return self;
 }
 
 -(instancetype)initWithImageSize:(CGSize)imagesize
@@ -58,7 +132,7 @@ void* NES_get_native_texture(NESGLTexture *texture)
     }
     
     _textureSize = imagesize;
-    texture_options = NESCGL::NESCGLTexture::NESDefault2DTextureOptions;
+    texture_options = NESDefault2DTextureOptions;
     
     if([NESGLContext supportsSharedMemoryTexture]){
         
@@ -66,20 +140,69 @@ void* NES_get_native_texture(NESGLTexture *texture)
         
         if(_textureRef){
             _cnative_texture = new NESCGL::NESCGLTexture(CVOpenGLESTextureGetName(_textureRef),
-                                                        (NESCGL::NESuint)imagesize.width,
-                                                        (NESCGL::NESuint)imagesize.height);
+                                                        (NESCGL::NESuint)_textureSize.width,
+                                                        (NESCGL::NESuint)_textureSize.height);
         }
+        
+        isGLTextureMemoryShared = YES;
     }
     else{
         
-        _cnative_texture = NESCGL::NESCGLTexture::createTextureWithOptions((NESCGL::NESuint)imagesize.width,
-                                                        (NESCGL::NESuint)imagesize.height,
+        _cnative_texture = NESCGL::NESCGLTexture::createTextureWithOptions((NESCGL::NESuint)_textureSize.width,
+                                                        (NESCGL::NESuint)_textureSize.height,
                                                         texture_options);
+        isGLTextureMemoryShared = NO;
     }
     
-    refrence_count = 0;
+    reference_count = 0;
     
     return self;
+}
+
+-(BOOL)refreshContentWithTextureBuffer:(CVPixelBufferRef)imagebuffer
+{
+    if(!imagebuffer){
+        return NO;
+    }
+    
+    [self cleanTextureRef];
+    
+    CFRetain(imagebuffer);
+    _textureBuffer = imagebuffer;
+    
+    _textureSize = CGSizeMake(CVPixelBufferGetWidth(imagebuffer),
+                              CVPixelBufferGetHeight(imagebuffer));
+    texture_options = NESDefault2DTextureOptions;
+    
+    CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                 [NESGLTexturePool sharedTexturePool].textureCacheRef,
+                                                 _textureBuffer,
+                                                 NULL,
+                                                 GL_TEXTURE_2D,
+                                                 GL_RGBA,
+                                                 (int)_textureSize.width,
+                                                 (int)_textureSize.height,
+                                                 GL_BGRA,
+                                                 GL_UNSIGNED_BYTE,
+                                                 0,
+                                                 &_textureRef);
+    nes_glBindTexture(CVOpenGLESTextureGetTarget(_textureRef), CVOpenGLESTextureGetName(_textureRef));
+    nes_glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, texture_options.wrap_s);
+    nes_glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, texture_options.wrap_t);
+    nes_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texture_options.min_filter);
+    nes_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texture_options.mag_filter);
+    nes_glBindTexture(GL_TEXTURE_2D, 0);
+    
+    if(_cnative_texture){
+        _cnative_texture->textureid = CVOpenGLESTextureGetName(_textureRef);
+        _cnative_texture->size.x = _textureSize.width;
+        _cnative_texture->size.y = _textureSize.height;
+    }
+    isGLTextureMemoryShared = YES;
+    
+    reference_count = 0;
+    
+    return YES;
 }
 
 - (void)createMemorySharedGLTexture
@@ -113,13 +236,16 @@ void* NES_get_native_texture(NESGLTexture *texture)
                                                  0,
                                                  &_textureRef);
     
+    nes_glBindTexture(CVOpenGLESTextureGetTarget(_textureRef), CVOpenGLESTextureGetName(_textureRef));
+    nes_glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, texture_options.wrap_s);
+    nes_glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, texture_options.wrap_t);
+    nes_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texture_options.min_filter);
+    nes_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texture_options.mag_filter);
+    nes_glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 -(uint32_t)textureId
 {
-    if(_textureRef){
-        return CVOpenGLESTextureGetName(_textureRef);
-    }
     if(_cnative_texture){
         return _cnative_texture->textureid;
     }
@@ -128,18 +254,18 @@ void* NES_get_native_texture(NESGLTexture *texture)
 
 - (void)textureRetain
 {
-    refrence_count++;
+    reference_count++;
 }
 - (void)textureRelease
 {
-    refrence_count--;
-    if(0 > refrence_count){
+    reference_count--;
+    if(0 > reference_count){
         NSAssert(NO, @"over release texture on [textureRelease]");
     }
 }
-- (int)getRefrenceCount
+- (int)getReferenceCount
 {
-    return refrence_count;
+    return reference_count;
 }
 
 

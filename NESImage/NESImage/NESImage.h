@@ -14,6 +14,19 @@ FOUNDATION_EXPORT double NESImageVersionNumber;
 //! Project version string for NESImage.
 FOUNDATION_EXPORT const unsigned char NESImageVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <NESImage/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <PublicHeader.h>
+
+#import <NESGLFilter.h>
+#import <NESGLView.h>
+#import <NESGLTexture.h>
+#import <NESGLProgram.h>
+#import <NESGLFramebuffer.h>
+#import <NESGLVertexBuffer.h>
+#import <NESInput.h>
+#import <NESOutput.h>
+#import <NESCamera.h>
+#import <NESGLContext.h>
+#import <NESGLTexturePool.h>
+
 
 

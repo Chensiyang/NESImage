@@ -32,6 +32,11 @@ extern void* NES_get_native_vertexbuffer(NESGLVertexBuffer *vertexbuffer)
 
 -(void)dealloc
 {
+    [self cleanNativeBuffer];
+}
+
+- (void)cleanNativeBuffer
+{
     if(_cnative_vertexbuffer){
         nes_glDeleteBuffers(1, &(_cnative_vertexbuffer->bufferid));
         delete _cnative_vertexbuffer;

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreVideo/CoreVideo.h>
-#import "NESGLContext.h"
-#import "NESGLTexture.h"
+#import <NESGLContext.h>
+#import <NESGLTexture.h>
 
 @interface NESGLTexturePool : NSObject
 {
@@ -25,6 +25,8 @@
 @property (assign, nonatomic) CVOpenGLESTextureCacheRef textureCacheRef;//only available for ios5.0 above
 
 
+- (NESGLTexture*)fetchTextureFromPool:(uint32_t)width
+                               height:(uint32_t)height;
 - (NESGLTexture*)fetchTextureFromPool:(uint32_t)width
                                height:(uint32_t)height
                               options:(NESGLTextureOptions)options;
