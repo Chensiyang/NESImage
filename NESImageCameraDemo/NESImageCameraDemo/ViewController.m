@@ -9,11 +9,13 @@
 #import "ViewController.h"
 #import "NESCamera.h"
 #import "NESGLView.h"
+#import "NESGLGrayFilter.h"
 
 @interface ViewController ()<NESCameraDelegate>
 {
     NESGLView* preview;
     NESCamera* capture;
+    NESGLGrayFilter *effect_filter;
     
 }
 
@@ -26,13 +28,16 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     capture = [[NESCamera alloc] initWithPreset:AVCaptureSessionPreset1280x720
-                                         camera:AVCaptureDevicePositionBack];
+                                         camera:AVCaptureDevicePositionFront];
     capture.sampleDelegate = self;
     
     preview = [[NESGLView alloc] initWithFrame:CGRectMake(0, 0,
                                                           self.view.bounds.size.width,
                                                           self.view.bounds.size.height)];
-    [capture addOutputTarget:preview];
+    effect_filter = [[NESGLGrayFilter alloc] init];
+    
+    [capture addOutputTarget:effect_filter];
+    [effect_filter addOutputTarget:preview];
     
     [self.view addSubview:preview];
 }
@@ -51,7 +56,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CVPixelBufferRef img_buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     size_t s_width = CVPixelBufferGetWidth(img_buffer);
     size_t s_height = CVPixelBufferGetHeight(img_buffer);
-    NSLog(@"get capture output : %ld, %ld", s_width, s_height);
     
 }
 

@@ -196,7 +196,7 @@
         nes_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
     
-//    glFinish();
+    glFinish();
     nes_glBindRenderbuffer(GL_RENDERBUFFER, present_renderbuffer);
     [[drawable_context context] presentRenderbuffer:GL_RENDERBUFFER];
     
@@ -304,21 +304,25 @@
     _cnative_program = new NESCGL::NESCGLProgram(NESCGL::default_glprogram_vertex_shader,
                                                NESCGL::default_glprogram_fragment_shader);
     _cnative_program->linkProgram();
+    _cnative_program->useProgram();
     pro_vertex_id = nes_glGetAttribLocation(_cnative_program->programid, "position");
     pro_tex_coordinate_id = nes_glGetAttribLocation(_cnative_program->programid, "inputTextureCoordinate");
     pro_input_texture_id = nes_glGetUniformLocation(_cnative_program->programid, "inputImageTexture");
     
+    nes_glEnableVertexAttribArray(pro_vertex_id);
+    nes_glEnableVertexAttribArray(pro_tex_coordinate_id);
+    
     coordinate_array[0] = 0.0;
-    coordinate_array[1] = 0.0;
+    coordinate_array[1] = 1.0;
     
     coordinate_array[2] = 1.0;
-    coordinate_array[3] = 0.0;
+    coordinate_array[3] = 1.0;
     
     coordinate_array[4] = 0.0;
-    coordinate_array[5] = 1.0;
+    coordinate_array[5] = 0.0;
     
     coordinate_array[6] = 1.0;
-    coordinate_array[7] = 1.0;
+    coordinate_array[7] = 0.0;
     
 }
 - (void)createGLViewFrameBuffer

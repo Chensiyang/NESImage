@@ -28,6 +28,7 @@
 @property(strong, nonatomic, readonly) AVCaptureSession* mSession;
 @property(strong, nonatomic, readonly) AVCaptureDeviceInput* mVideoInput;
 @property(strong, nonatomic, readonly) AVCaptureVideoDataOutput* mVideoOutput;
+@property(strong, nonatomic, readonly) AVCaptureConnection* mVideoCconnection;
 
 @property(strong, nonatomic, readonly) AVCaptureSessionPreset mCameraPreset;
 @property(nonatomic, readonly) AVCaptureDevicePosition mCameraPostion;

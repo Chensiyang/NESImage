@@ -74,15 +74,6 @@
     _mVideoOutput.alwaysDiscardsLateVideoFrames = NO;
     [_mVideoOutput setVideoSettings:@{((__bridge_transfer NSString*)kCVPixelBufferPixelFormatTypeKey):
                                          @(kCVPixelFormatType_32BGRA)}];
-    AVCaptureConnection* video_connection = [_mVideoOutput connectionWithMediaType:AVMediaTypeVideo];
-    if([video_connection isVideoOrientationSupported]){
-        [video_connection setVideoOrientation:AVCaptureVideoOrientationPortrait];
-    }
-    if([video_connection isVideoMirroringSupported]){
-        [video_connection setVideoMirrored:YES];
-    }
-    dispatch_queue_t camera_sample_queue = dispatch_queue_create("com.nes.camera.samplequeue", NULL);
-    [_mVideoOutput setSampleBufferDelegate:self queue:camera_sample_queue];
     
     if(![_mSession canAddOutput:_mVideoOutput]){
         NSAssert(NO, @"can not add AVCaptureVideoDataOutput:%@", _mVideoOutput);
@@ -90,14 +81,34 @@
     }
     [_mSession addOutput:_mVideoOutput];
     
+    _mVideoCconnection = [_mVideoOutput connectionWithMediaType:AVMediaTypeVideo];
+    if([_mVideoCconnection isVideoOrientationSupported]){
+        [_mVideoCconnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+    }
+    if(AVCaptureDevicePositionFront == camera){
+        if([_mVideoCconnection isVideoMirroringSupported]){
+            [_mVideoCconnection setVideoMirrored:YES];
+        }
+    }
+    
+    dispatch_queue_t camera_sample_queue = dispatch_queue_create("com.nes.camera.samplequeue", NULL);
+    [_mVideoOutput setSampleBufferDelegate:self queue:camera_sample_queue];
+    
     [_mSession commitConfiguration];
     
+    [self commonInit];
     
     return self;
 }
 
+- (void)commonInit
+{
+    [self createRenderBuffer];
+}
+
 - (void)createRenderBuffer
 {
+    [[NESGLContext sharedContext] activeAsCurrentContext];
     mRenderFramebuffer = [[NESGLFramebuffer alloc] init];
 }
 
@@ -168,6 +179,12 @@
         return;
     }
     [_mSession addInput:_mVideoInput];
+    
+    if(AVCaptureDevicePositionFront == positioin){
+        if([_mVideoCconnection isVideoMirroringSupported]){
+            [_mVideoCconnection setVideoMirrored:YES];
+        }
+    }
     
     [_mSession commitConfiguration];
 }

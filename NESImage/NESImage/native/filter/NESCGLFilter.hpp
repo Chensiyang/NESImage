@@ -20,23 +20,23 @@ namespace NESCGL {
     
     extern const char* default_glprogram_vertex_shader;
     extern const char* default_glprogram_fragment_shader;
-        
+    
+    static const NESfloat default_vertices[8] =
+    {
+        -1.0f,  -1.0,
+        1.0f,   -1.0,
+        -1.0f,  1.0f,
+        1.0f,   1.0f
+    };
+    static const NESfloat default_tex_coordinates[8] =
+    {
+        0.0f,   0.0f,
+        1.0f,   0.0,
+        0.0f,   1.0f,
+        1.0f,   1.0f
+    };
+    
     class NESCGLFilter{
-        
-        const NESfloat default_vertices[8] =
-        {
-            -1.0f,  -1.0,
-            1.0f,   -1.0,
-            -1.0f,  1.0f,
-            1.0f,   1.0f
-        };
-        const NESfloat default_tex_coordinates[8] =
-        {
-            0.0f,   0.0f,
-            1.0f,   0.0,
-            0.0f,   1.0f,
-            1.0f,   1.0f
-        };
         
     public:
         NESCGLFilter(void);//use method below
@@ -61,7 +61,7 @@ namespace NESCGL {
         NESint gl_input_texture_id;
         
     public:
-        void render(NESCGLFramebuffer* renderBuffer, NESRecti* viewport, NESCGLTexture* inputTexture);
+        virtual void render(NESCGLFramebuffer* renderBuffer, NESRecti* viewport, NESCGLTexture* inputTexture);
         
         
     };
