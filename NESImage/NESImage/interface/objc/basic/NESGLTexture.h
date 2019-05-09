@@ -45,6 +45,8 @@ typedef struct NESGLTextureOptions{
 
 -(instancetype)initWithImageSize:(CGSize)imagesize;
 
+-(instancetype)initWithImageSize:(CGSize)imagesize sharedMemory:(BOOL)sharedMemory;
+
 -(instancetype)initWithTextureBuffer:(CVPixelBufferRef)imagebuffer;
 -(BOOL)refreshContentWithTextureBuffer:(CVPixelBufferRef)imagebuffer;
 

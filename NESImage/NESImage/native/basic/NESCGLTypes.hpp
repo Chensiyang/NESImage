@@ -54,8 +54,13 @@ namespace NESCGL {
     }NESRectf;
     
     
-#define NES_GLOPERATION_SKIP INT8_MIN       /* operation being skipped */
+/* operation being skipped */
+#define NES_GLOPERATION_SKIP INT8_MIN
     
+
+/* returnCode */
+#define NES_NO_ERROR 0
+#define NES_PARAMS_ILLEGAL -1
     
     
 }//end NESCGL

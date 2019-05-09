@@ -13,10 +13,6 @@
 
 @interface NESGLFilter ()
 {
-    NESCGL::NESCGLFramebuffer *cnative_render_framebuffer;
-    NESCGL::NESCGLTexture *cnative_inputtexture;
-    
-    NESCGL::NESRecti render_rect;
     
 }
 
@@ -51,7 +47,7 @@
         return nil;
     }
     
-    [self setupNativeFilter:vertexshader fragmentShader:fragmentShader];
+    _cnative_filter = (NESCGL::NESCGLFilter*)[self createNativeFilter:vertexshader fragmentShader:fragmentShader];
     
     [self commonInit];
     
@@ -60,10 +56,10 @@
     return self;
 }
 
-- (void)setupNativeFilter:(const char*)vertexshader fragmentShader:(const char*)fragmentShader{
+- (void*)createNativeFilter:(const char*)vertexshader fragmentShader:(const char*)fragmentShader{
     
-    _cnative_filter = new NESCGL::NESCGLFilter(vertexshader, fragmentShader);
-    
+    NESCGL::NESCGLFilter* c_filter = new NESCGL::NESCGLFilter(vertexshader, fragmentShader);
+    return c_filter;
 }
 
 - (void)commonInit{
@@ -74,7 +70,6 @@
 - (void)setRenderFramebuffer:(NESGLFramebuffer*)framebuffer
 {
     mRenderFramebuffer = framebuffer;
-    cnative_render_framebuffer = (NESCGL::NESCGLFramebuffer*)NES_get_native_framebuffer(mRenderFramebuffer);
 }
 - (void)setRotation:(NESImageOrientation)rotation atIndex:(NSUInteger)index
 {
@@ -83,7 +78,6 @@
 - (void)setInputTexture:(NESGLTexture*)texture atIndex:(NSUInteger)index
 {
     mInputTexture = texture;
-    cnative_inputtexture = (NESCGL::NESCGLTexture*)NES_get_native_texture(mInputTexture);
 }
 
 - (void)renderFrame:(CGRect)rect atTime:(CMTime)time
@@ -106,10 +100,15 @@
     [mRenderFramebuffer framebufferAttatchColorTexture:self.outputTexture];
     
     if(_cnative_filter){
+        NESCGL::NESRecti render_rect;
         render_rect.x = 0;
         render_rect.y = 0;
         render_rect.width = (int)rect.size.width;
         render_rect.height = (int)rect.size.height;
+        
+        NESCGL::NESCGLFramebuffer *cnative_render_framebuffer = (NESCGL::NESCGLFramebuffer*)NES_get_native_framebuffer(mRenderFramebuffer);
+        NESCGL::NESCGLTexture *cnative_inputtexture = (NESCGL::NESCGLTexture*)NES_get_native_texture(mInputTexture);
+        
         _cnative_filter->render(cnative_render_framebuffer, &render_rect, cnative_inputtexture);
     }
     

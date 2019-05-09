@@ -46,12 +46,12 @@ namespace NESCGL {
         program->linkProgram();
         create_gl_buffer();
         
-        gl_vertex_id = nes_glGetAttribLocation(program->programid, "position");
-        gl_tex_coordinate_id = nes_glGetAttribLocation(program->programid, "inputTextureCoordinate");
-        gl_input_texture_id = nes_glGetUniformLocation(program->programid, "inputImageTexture");
+        glid_vertex = nes_glGetAttribLocation(program->programid, "position");
+        glid_tex_coordinate = nes_glGetAttribLocation(program->programid, "inputTextureCoordinate");
+        glid_input_texture = nes_glGetUniformLocation(program->programid, "inputImageTexture");
         
-        nes_glEnableVertexAttribArray(gl_vertex_id);
-        nes_glEnableVertexAttribArray(gl_tex_coordinate_id);
+        nes_glEnableVertexAttribArray(glid_vertex);
+        nes_glEnableVertexAttribArray(glid_tex_coordinate);
         
     }
     
@@ -103,27 +103,28 @@ namespace NESCGL {
         }
     }
     
-    void NESCGLFilter::render(NESCGLFramebuffer* renderBuffer, NESRecti* viewport, NESCGLTexture* inputTexture)
+    int NESCGLFilter::render(NESCGLFramebuffer* renderBuffer, NESRecti* viewport, NESCGLTexture* inputTexture)
     {
         renderBuffer->bindtoFramebufferViewPort(viewport);
         nes_glClear(GL_COLOR_BUFFER_BIT);
         
+        program->useProgram();
+        
         nes_glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-        nes_glVertexAttribPointer(gl_vertex_id, 2, GL_FLOAT, 0, 0, (void*)0);
+        nes_glVertexAttribPointer(glid_vertex, 2, GL_FLOAT, 0, 0, (void*)0);
         
         nes_glBindBuffer(GL_ARRAY_BUFFER, coordinate_buffer);
-        nes_glVertexAttribPointer(gl_tex_coordinate_id, 2, GL_FLOAT, 0, 0, (void*)0);
-        
-        program->useProgram();
+        nes_glVertexAttribPointer(glid_tex_coordinate, 2, GL_FLOAT, 0, 0, (void*)0);
         
         nes_glActiveTexture(GL_TEXTURE1);
         nes_glBindTexture(GL_TEXTURE_2D, inputTexture->textureid);
-        nes_glUniform1i(gl_input_texture_id, 1);
+        nes_glUniform1i(glid_input_texture, 1);
         
         nes_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         
         nes_glBindBuffer(GL_ARRAY_BUFFER, 0);
         
+        return NES_NO_ERROR;
     }
 
 }

@@ -19,6 +19,11 @@
 
 @implementation NESGLContext
 
++(void)load
+{
+    NESGLContext* shared_context = [NESGLContext sharedContext];
+}
+
 + (NESGLContext *)sharedContext
 {
     static NESGLContext *nesgl_context = nil;
@@ -42,7 +47,7 @@
 {
     NESCGL::NESCGLHelper* shared_heloper = NESCGL::access_shared_helper();
     shared_heloper->isGLStateSafe = true;
-    shared_heloper->glInvokeSafeLevel = NESCGL::NES_GLSAFE_LEVEL_NONE;
+    shared_heloper->glInvokeSafeLevel = NESCGL::NES_GLSAFE_LEVEL_BLOCKANDWAITE;
 }
 
 +(BOOL)supportsSharedMemoryTexture
@@ -68,6 +73,7 @@
     
     [self createGLContext];
     [self commonInit];
+    [self applicationActiveObserverInit];
     
     return self;
 }
@@ -82,6 +88,35 @@
 {
     [self activeAsCurrentContext];
     glDisable(GL_DEPTH_TEST);
+}
+
+- (void)applicationActiveObserverInit
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];//进入后台
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];//退出后台
+    
+}
+
+- (void)applicationWillResignActive:(NSNotification*)obj
+{
+    NESCGL::NESCGLHelper* shared_heloper = NESCGL::access_shared_helper();
+    shared_heloper->isGLStateSafe = false;
+    
+    glFlush();
+    
+}
+- (void)applicationDidBecomeActive:(NSNotification*)obj
+{
+    NESCGL::NESCGLHelper* shared_heloper = NESCGL::access_shared_helper();
+    shared_heloper->isGLStateSafe = true;
+    shared_heloper->try_wakeup_thread();
+    
 }
 
 - (EAGLContext *)context

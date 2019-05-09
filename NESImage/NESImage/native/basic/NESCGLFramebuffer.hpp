@@ -41,6 +41,9 @@ public:
     //---------------&&&  warning lable  &&&---------------//
     //this operate would simply bind this->framebufferid and not rebind the last framebuffer on using
     void framebufferAttatchColorTexture(NESCGLTexture* colorAttatchMent);//attatch colorAttatchMent to framebufferid
+    //return color texture buffer reference
+    NESCGLTexture* access_colorattatchMent_0();
+    
     
     static NESCGLFramebuffer* createFramebuffer(){
         NESuint framebuffers;
@@ -105,6 +108,10 @@ inline void NESCGLFramebuffer::framebufferAttatchColorTexture(NESCGLTexture* col
                                colorAttatchMent_0->textureid, 0);
 }
     
+inline NESCGLTexture* NESCGLFramebuffer::access_colorattatchMent_0()
+{
+    return colorAttatchMent_0;
+}
     
     
 }//end NESCGL

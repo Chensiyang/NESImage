@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreVideo/CoreVideo.h>
+#import <UIKit/UIKit.h>
 #include <OpenGLES/EAGL.h>
 #include <OpenGLES/ES2/gl.h>
 

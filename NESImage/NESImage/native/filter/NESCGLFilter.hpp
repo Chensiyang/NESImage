@@ -56,12 +56,21 @@ namespace NESCGL {
         NESuint vertex_buffer;
         NESuint coordinate_buffer;
         
-        NESint gl_vertex_id;
-        NESint gl_tex_coordinate_id;
-        NESint gl_input_texture_id;
+        NESint glid_vertex;
+        NESint glid_tex_coordinate;
+        NESint glid_input_texture;
         
     public:
-        virtual void render(NESCGLFramebuffer* renderBuffer, NESRecti* viewport, NESCGLTexture* inputTexture);
+        
+        /**
+         execute filter effect render
+
+         @param renderBuffer output buffer
+         @param viewport viewport according to renderBuffer
+         @param inputTexture input texture
+         @return refer to
+         */
+        virtual int render(NESCGLFramebuffer* renderBuffer, NESRecti* viewport, NESCGLTexture* inputTexture);
         
         
     };

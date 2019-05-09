@@ -36,6 +36,9 @@ public:
     NESCGLHelper(void);
     ~NESCGLHelper(void);
     
+protected:
+    int sem_v;
+    
 public:
     bool isGLStateSafe;
     int glInvokeSafeLevel;//if set to NES_GLSAFE_LEVEL_SKIPINVOKE,nes_glxxx method invoke may return NES_GLOPERATION_SKIP when isGLStateSafe is false
@@ -43,6 +46,9 @@ public:
 public:
     void blockThread(void);
     void unblockThread(void);
+    
+    void try_wakeup_thread(void);
+    int get_sem_v(void);
     
 private:
     sem_t *thread_block_semaphore;
@@ -62,6 +68,8 @@ inline NESCGLHelper::NESCGLHelper(void)
     if(SEM_FAILED == thread_block_semaphore){
         assert(0);
     }
+    
+    sem_v = 1;
 }
     
 inline NESCGLHelper::~NESCGLHelper(void)
@@ -87,14 +95,30 @@ inline NESCGLHelper::~NESCGLHelper(void)
 
 inline void NESCGLHelper::blockThread(void)
 {
-    sem_wait(thread_block_semaphore);
+    if(1 == sem_v){
+        sem_v--;
+        sem_wait(thread_block_semaphore);
+    }
 }
 
 inline void NESCGLHelper::unblockThread(void)
 {
-    sem_post(thread_block_semaphore);
+    if(0 == sem_v){
+        sem_v++;
+        sem_post(thread_block_semaphore);
+    }
 }
-
+    
+inline void NESCGLHelper::try_wakeup_thread(void)
+{
+    unblockThread();
+}
+    
+inline int NESCGLHelper::get_sem_v(void)
+{
+    return sem_v;
+}
+    
 NESCGLHelper* access_shared_helper()
 {
     static NESCGLHelper* default_cglhelper_instance = NULL;

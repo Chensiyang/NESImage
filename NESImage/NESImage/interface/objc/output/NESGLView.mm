@@ -115,17 +115,15 @@
 //  necessary for retain display
 - (void)configureGLLayer
 {
-    CAEAGLLayer* n_layer = (CAEAGLLayer*)self.layer;
-    n_layer.opaque = NO;
-    n_layer.hidden = NO;
-    n_layer.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking:[NSNumber numberWithBool:NO],
-                                   kEAGLDrawablePropertyColorFormat:kEAGLColorFormatRGBA8
-                                   };
     if([self respondsToSelector:@selector(contentScaleFactor)])
     {
-        CGFloat screen_scale = [[UIScreen mainScreen] scale];
-        [n_layer setContentsScale:screen_scale];
+        self.contentScaleFactor = [[UIScreen mainScreen] scale];
     }
+    CAEAGLLayer* n_layer = (CAEAGLLayer*)self.layer;
+    n_layer.opaque = YES;
+    n_layer.hidden = NO;
+    n_layer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
+    
 }
 //  set up render buffer for view and connect to framebuffer
 - (void)renderGLViewStorage
@@ -182,21 +180,20 @@
         render_rect.height = (int)m_view_pixel_size.height;
         
         cnative_render_framebuffer->bindtoFramebufferViewPort(&render_rect);
-        nes_glClearColor(0.0, 0.0, 0.0, 1.0);
         nes_glClear(GL_COLOR_BUFFER_BIT);
         
         nes_glVertexAttribPointer(pro_vertex_id, 2, GL_FLOAT, 0, 0, vertex_array);
         nes_glVertexAttribPointer(pro_tex_coordinate_id, 2, GL_FLOAT, 0, 0, coordinate_array);
         
         _cnative_program->useProgram();
-        nes_glActiveTexture(GL_TEXTURE1);
+        nes_glActiveTexture(GL_TEXTURE4);
         nes_glBindTexture(GL_TEXTURE_2D, cnative_inputtexture->textureid);
-        nes_glUniform1i(pro_input_texture_id, 1);
+        nes_glUniform1i(pro_input_texture_id, 4);
         
         nes_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
     
-    glFinish();
+    
     nes_glBindRenderbuffer(GL_RENDERBUFFER, present_renderbuffer);
     [[drawable_context context] presentRenderbuffer:GL_RENDERBUFFER];
     
